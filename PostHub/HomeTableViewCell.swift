@@ -35,7 +35,6 @@ class HomeTableViewCell: UITableViewCell {
             let likeStore = ["like" : likeCount + 1] as [String : Any]
             fireStoreDB.collection("Posts").document(dcumentIDLBL.text!).setData(likeStore, merge: true)
         }
-        
     }
     
 }
