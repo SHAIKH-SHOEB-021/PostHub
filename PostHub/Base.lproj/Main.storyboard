@@ -167,9 +167,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxL-Xi-MMA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxL-Xi-MMA">
                                 <rect key="frame" x="128" y="388" width="120" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8Vp-S3-6Ux"/>
+                                    <constraint firstAttribute="height" constant="35" id="EHK-oD-esJ"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Logout"/>
                                 <connections>
@@ -179,6 +182,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8cV-OQ-50S"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8cV-OQ-50S" firstAttribute="bottom" secondItem="OxL-Xi-MMA" secondAttribute="bottom" constant="306" id="2V2-kW-IJe"/>
+                            <constraint firstItem="8cV-OQ-50S" firstAttribute="trailing" secondItem="OxL-Xi-MMA" secondAttribute="trailing" constant="127" id="5ZB-d4-Od2"/>
+                            <constraint firstItem="OxL-Xi-MMA" firstAttribute="leading" secondItem="8cV-OQ-50S" secondAttribute="leading" constant="128" id="NzG-Xl-VSa"/>
+                            <constraint firstItem="OxL-Xi-MMA" firstAttribute="top" secondItem="8cV-OQ-50S" secondAttribute="top" constant="344" id="UOz-tj-4cS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setting" image="gear.circle" catalog="system" id="73H-LN-9a6"/>
                 </viewController>
@@ -194,19 +203,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gellary Photo" translatesAutoresizingMaskIntoConstraints="NO" id="XjN-kC-G9n">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gellary Photo" translatesAutoresizingMaskIntoConstraints="NO" id="XjN-kC-G9n">
                                 <rect key="frame" x="16" y="107" width="343" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="SEZ-DT-viH"/>
+                                    <constraint firstAttribute="height" constant="350" id="bZQ-l9-ADz"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZfA-dF-oRu">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZfA-dF-oRu">
                                 <rect key="frame" x="16" y="493" width="343" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="MP7-Dy-hCy"/>
+                                    <constraint firstAttribute="width" constant="343" id="j2T-Ko-Koc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUB-9E-5YY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUB-9E-5YY">
                                 <rect key="frame" x="128" y="559" width="120" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="s7l-am-r1n"/>
+                                    <constraint firstAttribute="height" constant="35" id="uYW-Dm-V2W"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Upload"/>
                                 <connections>
@@ -216,6 +234,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S1b-rf-u2b"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XjN-kC-G9n" firstAttribute="top" secondItem="S1b-rf-u2b" secondAttribute="top" constant="63" id="3Cf-RJ-kg2"/>
+                            <constraint firstItem="iUB-9E-5YY" firstAttribute="leading" secondItem="S1b-rf-u2b" secondAttribute="leading" constant="128" id="Bpu-tL-dbC"/>
+                            <constraint firstItem="ZfA-dF-oRu" firstAttribute="leading" secondItem="S1b-rf-u2b" secondAttribute="leading" constant="16" id="Eo9-Nx-5gi"/>
+                            <constraint firstItem="S1b-rf-u2b" firstAttribute="trailing" secondItem="iUB-9E-5YY" secondAttribute="trailing" constant="127" id="Lh5-tL-ft1"/>
+                            <constraint firstItem="S1b-rf-u2b" firstAttribute="trailing" secondItem="XjN-kC-G9n" secondAttribute="trailing" constant="16" id="RZ9-rc-xtX"/>
+                            <constraint firstItem="ZfA-dF-oRu" firstAttribute="top" secondItem="XjN-kC-G9n" secondAttribute="bottom" constant="36" id="XJE-z9-nuu"/>
+                            <constraint firstItem="S1b-rf-u2b" firstAttribute="bottom" secondItem="iUB-9E-5YY" secondAttribute="bottom" constant="135" id="cRe-rQ-XRK"/>
+                            <constraint firstItem="iUB-9E-5YY" firstAttribute="top" secondItem="ZfA-dF-oRu" secondAttribute="bottom" constant="31" id="csX-l0-w4X"/>
+                            <constraint firstItem="XjN-kC-G9n" firstAttribute="leading" secondItem="S1b-rf-u2b" secondAttribute="leading" constant="16" id="eH0-Va-Xvs"/>
+                            <constraint firstItem="S1b-rf-u2b" firstAttribute="trailing" secondItem="ZfA-dF-oRu" secondAttribute="trailing" constant="16" id="hUo-87-h0f"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="arrow.up.circle" catalog="system" id="0CM-xB-Zzu"/>
                     <connections>

@@ -46,7 +46,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             let imageRef = mediaFolder.child("\(uuid).jpg")
             imageRef.putData(data, metadata: nil){ (metaData, error) in
                 if error != nil {
-                    print("Error \(String(describing: error?.localizedDescription))")
+                    self.makeAlertFunc(titleInput: "Error", messageInput: error!.localizedDescription)
                 }else{
                     imageRef.downloadURL { (url, error) in
                         if error == nil{
@@ -58,7 +58,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                             let fireStorePost = ["imageUrl" : imageUrl!, "postBy" : Auth.auth().currentUser!.email!, "postTitle" : self.titleTextField.text!, "postDate" : FieldValue.serverTimestamp(), "like" : 0] as [String : Any]
                             fireStoreRef = fireStoreDB.collection("Posts").addDocument(data: fireStorePost, completion: { (error) in
                                 if error != nil{
-                                    print("Error \(String(describing: error?.localizedDescription))")
+                                    self.makeAlertFunc(titleInput: "Error", messageInput: error!.localizedDescription)
                                 }else{
                                     self.uploadImageView.image = UIImage(named: "defaultImage.jpeg")
                                     self.titleTextField.text = ""
@@ -67,8 +67,16 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                             })
                         }
                     }
+                    self.makeAlertFunc(titleInput: "Successful", messageInput: "Post Upload Successfully")
                 }
             }
         }
+    }
+    
+    func  makeAlertFunc(titleInput: String, messageInput: String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okBTN = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+        alert.addAction(okBTN)
+        self.present(alert, animated: true, completion: nil)
     }
 }

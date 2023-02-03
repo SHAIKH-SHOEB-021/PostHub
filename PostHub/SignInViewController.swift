@@ -27,16 +27,20 @@ class SignInViewController: UIViewController {
         if emailTF.text != "" && passwordTF.text != ""{
             Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) { (authData, error) in
                 if error != nil {
-                    print("Error \(String(describing: error?.localizedDescription))")
+                    self.makeAlert(titleInput: "Error", messageInput: error!.localizedDescription)
                 }else{
-                    print("Login Successful")
-                    let mainTabVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as!
-                    MainTabViewController
-                    self.navigationController?.pushViewController(mainTabVC, animated: true)
+                    let alert = UIAlertController(title: "Successful", message: "SignIn Successfully", preferredStyle: UIAlertController.Style.alert)
+                    let okBTN = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (UIAlertAction) in
+                        let mainTabVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as!
+                        MainTabViewController
+                        self.navigationController?.pushViewController(mainTabVC, animated: true)
+                    }
+                    alert.addAction(okBTN)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }else{
-            print("Empty Email or Password")
+            self.makeAlert(titleInput: "Empty", messageInput: "Empty Email or Password")
         }
     }
     
@@ -44,6 +48,13 @@ class SignInViewController: UIViewController {
         let signInVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as!
         SignUpViewController
         self.navigationController?.pushViewController(signInVC, animated: true)
+    }
+    
+    func makeAlert(titleInput: String, messageInput: String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okBTN = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okBTN)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

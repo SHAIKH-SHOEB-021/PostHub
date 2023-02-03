@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Hide Navi Back Button Code Here
         self.navigationItem.setHidesBackButton(true, animated: false)
         let tap = UITapGestureRecognizer(target: self, action: #selector(signInGesture))
         signInLBL.addGestureRecognizer(tap)
@@ -25,20 +26,32 @@ class SignUpViewController: UIViewController {
         if emailTF.text != "" && passwordTF.text != ""{
             Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (authData, error) in
                 if error != nil{
-                    print("Error \(String(describing: error?.localizedDescription))")
+                    //print("Error \(String(describing: error?.localizedDescription))")
+                    self.makeAlert(titleInput: "Error", messageInput: error!.localizedDescription)
                 }else{
-                    print("Sign Up Successful")
-                    let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-                    self.navigationController?.pushViewController(signUpVC, animated: true)
+                    let alert = UIAlertController(title: "Successful", message: "SignUp Successfully", preferredStyle: UIAlertController.Style.alert)
+                    let okBTN = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (UIAlertAction) in
+                        let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                        self.navigationController?.pushViewController(signUpVC, animated: true)
+                    }
+                    alert.addAction(okBTN)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }else{
-            print("Empty Email or Password")
+            self.makeAlert(titleInput: "Empty", messageInput: "Empty Email or Password")
         }
     }
     
     @objc func signInGesture(){
         let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
         self.navigationController?.pushViewController(signUpVC, animated: true)
+    }
+    
+    func makeAlert(titleInput: String, messageInput: String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okBTN = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okBTN)
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -107,8 +107,8 @@
 				A80EA0A3298A6BDB009FC8E3 /* HomeTableViewCell.swift */,
 				A80EA0A4298A6BDB009FC8E3 /* HomeTableViewCell.xib */,
 				A8474B832989307A00F0AE01 /* Main.storyboard */,
-				A8474B862989307C00F0AE01 /* Assets.xcassets */,
 				A8474B882989307C00F0AE01 /* LaunchScreen.storyboard */,
+				A8474B862989307C00F0AE01 /* Assets.xcassets */,
 				A8474B8B2989307C00F0AE01 /* Info.plist */,
 				A8474B9929894A6700F0AE01 /* GoogleService-Info.plist */,
 			);
