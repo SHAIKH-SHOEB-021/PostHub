@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 class SignInViewController: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
@@ -45,6 +46,27 @@ class SignInViewController: UIViewController {
     }
     
     @objc func signUpGesture(){
+        
+        // Notification Code Here
+        let noticenter = UNUserNotificationCenter.current()
+        noticenter.requestAuthorization(options: [.alert, .sound]) { (allowed, error) in
+            if allowed {
+                print("Permission Grand")
+            }else{
+                print("Permission Not Grand")
+            }
+        }
+        let content = UNMutableNotificationContent()
+        content.title = "Alert"
+        content.body = "You are miss some message or post on posthub please check now"
+        content.sound = .default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let request = UNNotificationRequest(identifier: "404", content: content, trigger: trigger)
+        noticenter.add(request) { (error) in
+            print("\(String(describing: error?.localizedDescription))")
+        }
+        // Move SignUp View Controller Code Here
         let signInVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as!
         SignUpViewController
         self.navigationController?.pushViewController(signInVC, animated: true)
